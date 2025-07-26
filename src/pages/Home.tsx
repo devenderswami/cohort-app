@@ -1,12 +1,14 @@
 //import React, { useState } from 'react';
 import { FaBrain, FaCog, FaFileAlt, FaUserGraduate, FaMapMarkedAlt, FaRegStickyNote, FaTools, FaRoute, FaUsers, FaBolt, FaQuestionCircle, FaEdit } from 'react-icons/fa';
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar';
 import AnnouncementBanner from '../components/AnnouncementBanner';
 import styles from './Home.module.css';
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
  // const navigate = useNavigate();
   //const [showForm, setShowForm] = useState<'login' | 'signup' | null>(null);
+  const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
@@ -14,27 +16,27 @@ export default function Home() {
       <AnnouncementBanner />
       <main className={styles.mainContent}>
         <h1 className={styles.heroTitle}>
-          Become an <span className={styles.highlight}>AI/ML Engineer</span>
+          {t('home.title.become')} <span className={styles.highlight}>{t('home.title.aiEngineer')}</span>
         </h1>
         <p className={styles.subheading}>
-          Your 12-Month 2025 Roadmap to a High-Value Career
+          {t('home.subtitle')}
         </p>
         <p className={styles.note}>
-          *This curriculum is heavily focused on building practical AI Engineer skills. We cover foundational ML concepts, with a dedicated ML roadmap coming soon.
+          {t('home.curriculumNote')}
         </p>
 
         <div className={styles.roadmapContainer}>
           <div className={styles.roadmapCard}>
             <FaBrain size={40} color="#6B46C1" />
-            <h2>AI Engineer Roadmap</h2>
-            <p>A 12-month, project-based curriculum to become a job-ready AI Engineer. Focus on practical skills and real-world applications.</p>
-            <button className={styles.primaryButton}>Start Building</button>
+            <h2>{t('home.aiRoadmap.title')}</h2>
+            <p>{t('home.aiRoadmap.description')}</p>
+            <button className={styles.primaryButton}>{t('home.startBuilding')}</button>
           </div>
           <div className={styles.roadmapCardDisabled}>
             <FaCog size={40} color="#A0AEC0" />
-            <h2>ML Researcher Roadmap</h2>
-            <p>Deep dive into theory, algorithms, and research for innovative ML models.</p>
-            <button className={styles.disabledButton} disabled>Coming Soon</button>
+            <h2>{t('home.mlRoadmap.title')}</h2>
+            <p>{t('home.mlRoadmap.description')}</p>
+            <button className={styles.disabledButton} disabled>{t('home.comingSoon')}</button>
           </div>
         </div>
 

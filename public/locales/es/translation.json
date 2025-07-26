@@ -18,6 +18,24 @@
     "course": {
       "enroll": "Inscribirse",
       "view": "Ver Curso"
+    },
+    "home": {
+      "title": {
+        "become": "Conviértete en",
+        "aiEngineer": "Ingeniero de IA/ML"
+      },
+      "subtitle": "Tu Hoja de Ruta 2025 de 12 Meses hacia una Carrera de Alto Valor",
+      "curriculumNote": "*Este plan de estudios está muy enfocado en desarrollar habilidades prácticas de Ingeniero de IA. Cubrimos conceptos fundamentales de ML, con una hoja de ruta dedicada a ML próximamente.",
+      "aiRoadmap": {
+        "title": "Ruta de Ingeniero de IA",
+        "description": "Un plan de estudios de 12 meses basado en proyectos para convertirte en un Ingeniero de IA listo para trabajar. Enfoque en habilidades prácticas y aplicaciones del mundo real."
+      },
+      "mlRoadmap": {
+        "title": "Ruta de Investigador de ML",
+        "description": "Profundiza en teoría, algoritmos e investigación para modelos ML innovadores."
+      },
+      "startBuilding": "Empezar a Construir",
+      "comingSoon": "Próximamente"
     }
   }
 }

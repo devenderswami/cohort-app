@@ -18,6 +18,24 @@
     "course": {
       "enroll": "Enroll",
       "view": "View Course"
+    },
+    "home": {
+      "title": {
+        "become": "Become an",
+        "aiEngineer": "AI/ML Engineer"
+      },
+      "subtitle": "Your 12-Month 2025 Roadmap to a High-Value Career",
+      "curriculumNote": "*This curriculum is heavily focused on building practical AI Engineer skills. We cover foundational ML concepts, with a dedicated ML roadmap coming soon.",
+      "aiRoadmap": {
+        "title": "AI Engineer Roadmap",
+        "description": "A 12-month, project-based curriculum to become a job-ready AI Engineer. Focus on practical skills and real-world applications."
+      },
+      "mlRoadmap": {
+        "title": "ML Researcher Roadmap",
+        "description": "Deep dive into theory, algorithms, and research for innovative ML models."
+      },
+      "startBuilding": "Start Building",
+      "comingSoon": "Coming Soon"
     }
   }
 }

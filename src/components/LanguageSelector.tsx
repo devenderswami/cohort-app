@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// Just include the languages we have translations for now
 const languages = [
   { code: 'en', name: 'English' },
-  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-  { code: 'de', name: 'Deutsch' },
-  { code: 'ja', name: '日本語' },
-  { code: 'zh', name: '中文' }
+  { code: 'es', name: 'Español' }
 ];
 
 const LanguageSelector: React.FC = () => {
   const { i18n } = useTranslation();
+  const [currentLang, setCurrentLang] = useState(i18n.language || 'en');
   
-  const changeLanguage = (lng: string) => {
+  const changeLanguage = useCallback((lng: string) => {
     i18n.changeLanguage(lng);
-  };
+    setCurrentLang(lng);
+    // Save to localStorage for persistence
+    localStorage.setItem('i18nextLng', lng);
+    // Force re-render of components using translations
+    window.dispatchEvent(new Event('languageChanged'));
+  }, [i18n]);
+  
+  useEffect(() => {
+    // Set initial language from localStorage or browser
+    const storedLang = localStorage.getItem('i18nextLng');
+    if (storedLang && storedLang !== currentLang) {
+      changeLanguage(storedLang);
+    }
+  }, [currentLang, changeLanguage]);
 
-  const selectedLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const selectedLanguage = languages.find(lang => lang.code === currentLang) || languages[0];
 
   return (
     <div style={{ 
