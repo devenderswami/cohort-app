@@ -1,0 +1,91 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navLogo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #5e17eb;
+}
+
+.navLinks {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navItem {
+  text-decoration: none;
+  color: #5e17eb;
+  font-weight: 500;
+}
+
+.loginButton {
+  padding: 0.5rem 1rem;
+  background-color: #5e17eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #5e17eb;
+}
+
+.dropdownToggle:hover {
+  background-color: #f2e9ff;
+  border-radius: 6px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  padding: 0.5rem;
+  z-index: 999;
+}
+
+.dropdown:hover .dropdownMenu {
+  display: flex;
+}
+
+.dropdownMenu a {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.dropdownMenu a:hover {
+  background-color: #f2e9ff;
+}
