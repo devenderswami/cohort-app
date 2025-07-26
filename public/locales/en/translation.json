@@ -1,0 +1,23 @@
+{
+  "translation": {
+    "welcome": "Welcome to Cohort App",
+    "navigation": {
+      "home": "Home",
+      "courses": "AI Roadmap",
+      "features": "Features",
+      "practiceQuestions": "Practice Questions",
+      "resumeEvaluator": "Resume Evaluator",
+      "leaderboard": "Leaderboard",
+      "myNotes": "My Notes",
+      "login": "Login",
+      "signup": "Sign Up"
+    },
+    "announcements": {
+      "new": "New announcement"
+    },
+    "course": {
+      "enroll": "Enroll",
+      "view": "View Course"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "translation": {
+    "welcome": "Bienvenido a Cohort App",
+    "navigation": {
+      "home": "Inicio",
+      "courses": "Ruta de IA",
+      "features": "Funciones",
+      "practiceQuestions": "Preguntas de Práctica",
+      "resumeEvaluator": "Evaluador de CV",
+      "leaderboard": "Tabla de Clasificación",
+      "myNotes": "Mis Notas",
+      "login": "Iniciar Sesión",
+      "signup": "Registrarse"
+    },
+    "announcements": {
+      "new": "Nuevo anuncio"
+    },
+    "course": {
+      "enroll": "Inscribirse",
+      "view": "Ver Curso"
+    }
+  }
+}

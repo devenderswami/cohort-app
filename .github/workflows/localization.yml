@@ -1,0 +1,128 @@
+name: Localization
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  extract-and-generate-translations:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        locale: [en, es, fr, de, ja, zh]  # English, Spanish, French, German, Japanese, Chinese
+        
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install i18next tools
+        run: npm install -g i18next-parser
+        
+      - name: Create locales directory if it doesn't exist
+        run: mkdir -p public/locales/${{ matrix.locale }}
+        
+      - name: Extract translation keys
+        run: i18next 'src/**/*.{ts,tsx}' -o public/locales/
+        
+      - name: Set up region-specific configurations
+        run: |
+          if [ "${{ matrix.locale }}" = "en" ]; then
+            echo "Setting up English (US) configurations"
+            # Add region-specific config logic here
+          elif [ "${{ matrix.locale }}" = "es" ]; then
+            echo "Setting up Spanish configurations"
+            # Add region-specific config logic here
+          elif [ "${{ matrix.locale }}" = "fr" ]; then
+            echo "Setting up French configurations"
+            # Add region-specific config logic here
+          elif [ "${{ matrix.locale }}" = "de" ]; then
+            echo "Setting up German configurations"
+            # Add region-specific config logic here
+          elif [ "${{ matrix.locale }}" = "ja" ]; then
+            echo "Setting up Japanese configurations"
+            # Add region-specific config logic here
+          elif [ "${{ matrix.locale }}" = "zh" ]; then
+            echo "Setting up Chinese configurations"
+            # Add region-specific config logic here
+          fi
+      
+      - name: Upload translation files as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: translations-${{ matrix.locale }}
+          path: public/locales/${{ matrix.locale }}
+          
+  build-localized-versions:
+    needs: extract-and-generate-translations
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        locale: [en, es, fr, de, ja, zh]
+        
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Download translation files
+        uses: actions/download-artifact@v4
+        with:
+          name: translations-${{ matrix.locale }}
+          path: public/locales/${{ matrix.locale }}
+          
+      - name: Build localized version
+        run: |
+          echo "VITE_APP_LOCALE=${{ matrix.locale }}" > .env.production
+          npm run build -- --outDir=dist/${{ matrix.locale }}
+          
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.locale }}
+          path: dist/${{ matrix.locale }}
+
+  deploy:
+    needs: build-localized-versions
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist-all
+      
+      - name: Prepare for deployment
+        run: |
+          mkdir -p dist
+          for locale in en es fr de ja zh; do
+            mkdir -p dist/$locale
+            cp -r dist-all/build-$locale/* dist/$locale/
+          done
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
