@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 // Just include the languages we have translations for now
 const languages = [
   { code: 'en', name: 'English' },
-  { code: 'es', name: 'Español' }
+  { code: 'es', name: 'Español' },
+  { code: 'hi', name: 'हिन्दी' }
 ];
 
 const LanguageSelector: React.FC = () => {

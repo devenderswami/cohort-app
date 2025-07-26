@@ -6,10 +6,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // Import translations directly to ensure they're available immediately
 import enTranslation from '../public/locales/en/translation.json';
 import esTranslation from '../public/locales/es/translation.json';
+import hiTranslation from '../public/locales/hi/translation.json';
 
 const resources = {
   en: enTranslation,
   es: esTranslation,
+  hi: hiTranslation,
 };
 
 i18n
